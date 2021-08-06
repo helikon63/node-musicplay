@@ -76,7 +76,6 @@ app.get("/music/play/:id",(req,res) => {
 })
 
 app.get("/music/name/:id",(req,res) =>{
-    console.log(alist);
 
     const id=req.params.id;
 
@@ -94,8 +93,7 @@ app.get("/music/name/:id",(req,res) =>{
 )
 
 app.get("/music/play",(req,res) => {
-    console.log(count);
-    count++;
+
     // res.download("./music1/"+List[0]);
     //res.setHeader("Content-disposition","attachment; filename=azxc");
    // res.sendFile(__dirname+"/music1/"+List[0]);
