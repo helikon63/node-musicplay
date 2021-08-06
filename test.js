@@ -29,7 +29,7 @@ process.env.AWS_SECRET_KEY="i2/Fjx4Bb+v0/DBYYy4gr3gJb46IPbKVmNc/HMp4"
 
 }); */
 var params = {Bucket:"musicnode",
-Key: "music1/혜령 - 스쳐가지 말아요.mp3"
+Key: `music1/${key}`
 }
 
 app = express();
@@ -67,7 +67,8 @@ app.get("/music/play/:id",(req,res) => {
     //res.setHeader("Content-disposition","attachment; filename=azxc");
     //res.sendFile(__dirname+"/music1/"+List[id-1]);
 
-    key=songs[id-1];
+    console.log(songs[id-1]);
+    params.Key=`music1/${songs[id-1]}`;
     res.setHeader('Content-disposition','attachment; filename="asd"');
     s3.getObject(params).createReadStream().pipe(res);
   
@@ -98,7 +99,8 @@ app.get("/music/play",(req,res) => {
     // res.download("./music1/"+List[0]);
     //res.setHeader("Content-disposition","attachment; filename=azxc");
    // res.sendFile(__dirname+"/music1/"+List[0]);
-    key=songs[0];
+    console.log(songs[0]);
+    params.Key=`music1/${songs[0]}`;
     res.setHeader('Content-disposition','attachment; filename="asd"');
     s3.getObject(params).createReadStream().pipe(res);
     
